@@ -2,7 +2,7 @@
 
 Plataforma de presentación corporativa (Landing Page) para **Katrix**, una agencia especializada en E-commerce de alto rendimiento, Infraestructura a medida e Inteligencia Artificial (RAG).
 
-![Katrix Hero Section](docs/hero-screenshot.png) <!-- Reemplazar con screenshot real -->
+![Katrix Hero Section](docs/hero.png)
 
 ---
 
