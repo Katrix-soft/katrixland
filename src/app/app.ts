@@ -33,6 +33,11 @@ export class App {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
+    
+    // Verificación de Honeypot para bots
+    if (formData.get('_honey')) {
+      return;
+    }
 
     this.isSubmitting.set(true);
     this.submitSuccess.set(false);

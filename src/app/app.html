@@ -382,6 +382,10 @@
         </div>
     </div>
     <form (submit)="submitForm($event)" class="bg-surface border border-outline-variant rounded-xl p-lg shadow-sm flex flex-col gap-md">
+        <!-- Honeypot para evitar spam de bots -->
+        <div class="hidden" aria-hidden="true">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+        </div>
         <!-- FormSubmit Config -->
         <input type="hidden" name="_subject" value="Nuevo prospecto desde Katrix Landing">
         <input type="hidden" name="_template" value="table">
