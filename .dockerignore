@@ -7,5 +7,4 @@ README.md
 docs
 .vscode
 Dockerfile
-nginx.conf
 .dockerignore

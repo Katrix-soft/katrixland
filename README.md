@@ -39,7 +39,7 @@ Aquí tienes la estructura visual de la aplicación:
 ![Precios](docs/pricing.png)
 
 ### 2. Formulario de Contacto Dinámico
-![Formulario](docs/contact-screenshot.png) <!-- Reemplazar con screenshot real -->
+![Formulario](docs/contact.png)
 
 ### 3. Estado del Sistema
 ![Status](docs/status-screenshot.png) <!-- Reemplazar con screenshot real -->
