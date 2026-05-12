@@ -12,6 +12,7 @@ export class App {
   isSubmitting = signal(false);
   submitSuccess = signal(false);
   submitError = signal(false);
+  isMobileMenuOpen = signal(false);
 
   setView(view: string, event: Event) {
     event.preventDefault();
