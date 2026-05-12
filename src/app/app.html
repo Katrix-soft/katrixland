@@ -1,0 +1,533 @@
+<!-- TopNavBar -->
+<header class="fixed top-4 left-0 right-0 z-50 px-gutter w-full">
+<div class="flex justify-between items-center h-[72px] px-lg max-w-5xl mx-auto bg-surface/70 backdrop-blur-md border border-outline-variant/50 shadow-sm rounded-full transition-all duration-300">
+<div class="flex items-center">
+<a href="#" (click)="setView('home', $event)" class="hover:opacity-80 transition-opacity"><img src="logo.png" alt="Katrix Logo" class="h-10 md:h-12 w-auto object-contain"></a>
+</div>
+<nav class="hidden md:flex items-center bg-surface-container-low/50 p-1 rounded-full border border-outline-variant/30">
+<a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" href="#caracteristicas">Características</a>
+<a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" href="#soluciones">Soluciones</a>
+<a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" href="#cultura">Cultura</a>
+<a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" href="#precios">Precios</a>
+</nav>
+<div class="hidden md:flex items-center gap-md">
+<div class="relative flex group">
+    <div class="absolute -inset-1 bg-gradient-to-r from-red-500 to-rose-600 rounded-full blur opacity-40 group-hover:opacity-60 animate-pulse transition duration-500"></div>
+    <a href="#precios" class="relative font-label-md text-label-md text-white bg-gradient-to-r from-red-500 to-rose-600 rounded-full px-xl py-3 hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+        Comenzar ya!
+        <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+    </a>
+</div>
+</div>
+<button class="md:hidden text-on-surface-variant material-symbols-outlined text-[28px]">menu</button>
+</div>
+</header>
+@if(currentView() === 'home') {
+<main>
+<!-- Hero Section -->
+<section id="inicio" class="pt-32 pb-3xl lg:pt-[160px] lg:pb-[120px] px-gutter max-w-container-max mx-auto text-center flex flex-col items-center">
+<h1 class="font-display-lg text-display-lg md:text-[64px] md:leading-[72px] text-on-surface max-w-3xl mb-lg">Acelera tu SaaS de forma <span class="text-primary">Fiable</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-xl">Empoderamos a tu equipo para construir, escalar e innovar más rápido que nunca. Descubre la infraestructura empresarial en la que puedes confiar ciegamente.</p>
+<div class="flex flex-col sm:flex-row gap-md justify-center w-full sm:w-auto">
+<button class="font-label-md text-label-md text-white bg-gradient-to-r from-red-500 to-rose-600 rounded-full px-[32px] py-[16px] hover:shadow-xl hover:shadow-red-500/40 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-red-500/30 flex items-center justify-center gap-2">
+                    Prueba Gratuita
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-[32px] py-[16px] hover:border-primary hover:text-primary transition-all duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+                    Ver Demo
+                </button>
+</div>
+<div class="mt-3xl w-full max-w-5xl rounded-xl overflow-hidden border border-outline-variant shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),_0px_10px_10px_-5px_rgba(0,0,0,0.04)] bg-surface relative aspect-[16/9]">
+<img alt="Dashboard preview" class="w-full h-full object-cover object-top opacity-90" data-alt="A highly detailed, modern software dashboard interface displayed on a sleek monitor. The UI is bright, airy, and professional, using a light mode aesthetic with white backgrounds and subtle gray panels. Data visualizations like clean line graphs and crisp bar charts use vibrant violet accent colors. The lighting is soft and studio-quality, emphasizing clarity and high-tech efficiency in a corporate environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb_79eXUV1WjrSoX7NA8KxdmGYPhibQ4YGAfKfImKGaxCrT4r9Oq3QyRDq0hfSuEqRmHqwwnJmHc99-caGb_QyA1uZz9ppFk1Dtq95xDFN4M2caMEKkW69sfg5WYMdU_XMXoHkclCM_HuhGICYoSWmHR0VZlyqC5_gOUR855FdVVMLWyET9QYfEEMLxkfKSCM02irR8e0wg8ArRzWNpAS1btXjbV2h37HDsRA7ZK-6WwXBAKfniXgignYO3Nsk70ATNZ2VAAKnyiQy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface/40 to-transparent"></div>
+</div>
+</section>
+<!-- Features Section -->
+<section id="caracteristicas" class="py-3xl bg-surface-bright px-gutter">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-2xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Diseñado para Escalar</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Todo lo que necesitas para gestionar tu empresa en crecimiento, empaquetado en una plataforma increíblemente fiable.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Feature Card 1 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-lg shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] hover:border-blue-500 hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300 group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-md group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-indigo-600 transition-all duration-300 shadow-sm">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors duration-300">speed</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm group-hover:text-blue-600 transition-colors">Rendimiento Extremo</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tiempos de carga ultrarrápidos e infraestructura optimizada que garantizan que tus aplicaciones fluyan sin interrupciones bajo máxima presión.</p>
+</div>
+<!-- Feature Card 2 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-lg shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] hover:border-emerald-500 hover:shadow-emerald-500/20 hover:-translate-y-1 transition-all duration-300 group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-md group-hover:bg-gradient-to-br group-hover:from-emerald-400 group-hover:to-teal-500 transition-all duration-300 shadow-sm">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors duration-300">security</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm group-hover:text-emerald-600 transition-colors">Seguridad Blindada</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Encriptación de nivel bancario y cumplimiento de normativas globales. Tu información y la de tus clientes, 100% segura y privada.</p>
+</div>
+<!-- Feature Card 3 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-lg shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] hover:border-purple-500 hover:shadow-purple-500/20 hover:-translate-y-1 transition-all duration-300 group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-md group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-violet-600 transition-all duration-300 shadow-sm">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors duration-300">layers</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm group-hover:text-purple-600 transition-colors">Escalabilidad Total</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Crece desde una startup hasta una multinacional sin esfuerzo. Una arquitectura flexible diseñada para no fallar jamás.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Solutions / Services Section -->
+<section id="soluciones" class="py-3xl px-gutter max-w-container-max mx-auto">
+<div class="text-center mb-2xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Nuestras Soluciones Especializadas</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Convertimos tus ideas en proyectos digitales rentables, escalables y 100% automatizados.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Service Card 1 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-lg hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 hover:border-blue-500 transition-all duration-300 group flex flex-col">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-white text-[28px]">storefront</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">E-commerce</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Tiendas online de alto rendimiento, optimizadas para conversión y diseñadas para soportar miles de ventas por minuto sin pestañear.</p>
+<a href="https://eco.katrix.com.ar" target="_blank" class="inline-flex items-center gap-1 font-label-md text-primary hover:text-indigo-600 transition-colors mt-lg">Ver Proyecto <span class="material-symbols-outlined text-[16px]">open_in_new</span></a>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-lg hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20 hover:border-emerald-500 transition-all duration-300 group flex flex-col">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-white text-[28px]">account_tree</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Automatizaciones</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Ahorramos cientos de horas a tu equipo conectando tus apps favoritas y automatizando flujos de trabajo complejos con N8N y Zapier.</p>
+<a href="#" class="inline-flex items-center gap-1 font-label-md text-on-surface-variant hover:text-primary transition-colors mt-lg opacity-50 cursor-not-allowed">Próximamente</a>
+</div>
+<!-- Service Card 3 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-lg hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-500/20 hover:border-pink-500 transition-all duration-300 group flex flex-col">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-white text-[28px]">web</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Consultoría & Landings</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Páginas de aterrizaje ultrarrápidas y diseño persuasivo creadas por nuestra consultora experta para multiplicar tus leads.</p>
+<a href="https://arkhon.com.ar" target="_blank" class="inline-flex items-center gap-1 font-label-md text-primary hover:text-indigo-600 transition-colors mt-lg">Visitar Arkhon <span class="material-symbols-outlined text-[16px]">open_in_new</span></a>
+</div>
+<!-- Service Card 4 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-lg hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-500/20 hover:border-purple-500 transition-all duration-300 group flex flex-col">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-white text-[28px]">memory</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">I.A. y RAG</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Implementamos Inteligencia Artificial con RAG para crear asistentes inteligentes que conocen toda la documentación y secretos de tu empresa.</p>
+<a href="https://kata.katrix.com.ar" target="_blank" class="inline-flex items-center gap-1 font-label-md text-primary hover:text-indigo-600 transition-colors mt-lg">Conocer a Kata <span class="material-symbols-outlined text-[16px]">open_in_new</span></a>
+</div>
+</div>
+</section>
+<!-- Culture / Future of Work Section -->
+<section id="cultura" class="py-3xl px-gutter max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-2xl items-center">
+<div class="order-2 lg:order-1 rounded-xl overflow-hidden border border-outline-variant shadow-sm aspect-square relative">
+<img alt="Team collaboration" class="w-full h-full object-cover" data-alt="A diverse team of young professionals collaborating in a bright, modern, sunlit office space. They are gathered around a sleek glass table, looking at a minimalist laptop screen and smiling. The environment is airy with white walls, subtle gray architectural details, and natural light flooding in, embodying a clean, high-tech corporate culture. The mood is energetic, transparent, and collaborative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt-NQa8pBzrdd6ykDYPWL92nnvFWJHC-jZkdNBmzqzb0nQcEAXw5e7CqQG1jJPTblmkFjhw3b-1K7pF36ZEj6sPZdzp-R2OFPEjIX0UAQkjaBsDLwM43yJoBHSe_48MNHtGaG05SOOj7QJH_c1j7dm3ScXkS5Zys0bdhF5dSxO0THTRpdovMdH1ZVL7MUuwvuH_ZLRE9xuFkg_GHUB9TJYldLNLU19DfT0u2_SNvuh9GQmWB_eMSmo1xB6vlrpyiFNEy0tdq4JzRFd"/>
+</div>
+<div class="order-1 lg:order-2 flex flex-col justify-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-primary font-label-md text-label-md w-max mb-md">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+                        Nuestra Cultura
+                    </div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">El Futuro del Trabajo</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">Creemos que el software revolucionario se construye con equipos brillantes. Katrix está diseñado para fomentar la colaboración constante, la transparencia y la innovación, dándote la tranquilidad de una plataforma robusta y fiable.</p>
+<ul class="space-y-md mb-xl">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Espacios de trabajo colaborativos en tiempo real.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Reportes y analíticas 100% transparentes.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Integraciones fluidas con tus herramientas favoritas.</span>
+</li>
+</ul>
+<button class="font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-lg py-sm hover:border-primary hover:text-primary transition-all duration-200 w-max">Descubre más sobre nosotros</button>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section id="precios" class="py-3xl bg-surface-bright px-gutter">
+<div class="max-w-container-max mx-auto">
+
+<!-- Ecommerce Plans -->
+<div class="text-center mb-2xl">
+<span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-700 font-label-sm mb-4">E-commerce</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Planes de E-commerce</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Tiendas online de alto rendimiento preparadas para escalar sin límites.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg max-w-5xl mx-auto mb-3xl">
+    <!-- E-commerce Básico -->
+    <div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] flex flex-col hover:border-blue-500 hover:shadow-lg transition-all duration-300">
+    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Básico</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Para negocios que recién comienzan.</p>
+    <div class="mb-xl">
+    <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
+    <span class="font-display-lg text-display-lg text-on-surface">$15K</span>
+    <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
+    </div>
+    <ul class="space-y-md mb-xl flex-1">
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Diseño responsivo</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Hasta 500 productos</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Soporte estándar</span>
+    </li>
+    </ul>
+    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-lg py-md hover:border-blue-500 hover:text-blue-600 transition-all duration-200">Consultar Básico</a>
+    </div>
+
+    <!-- E-commerce Pro -->
+    <div class="bg-surface border-2 border-blue-500 rounded-xl p-xl shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),_0px_10px_10px_-5px_rgba(0,0,0,0.04)] flex flex-col relative transform md:-translate-y-4 hover:shadow-blue-500/20 transition-all duration-300">
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white font-label-md text-[10px] uppercase tracking-wider px-4 py-1 rounded-full shadow-md whitespace-nowrap">
+        Más Elegido
+    </div>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Profesional</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Tiendas online sin límites. Listas para vender a gran escala.</p>
+    <div class="mb-xl">
+    <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
+    <span class="font-display-lg text-display-lg text-on-surface">$30K</span>
+    <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
+    </div>
+    <ul class="space-y-md mb-xl flex-1">
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">done_all</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Productos y ventas sin límites</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">done_all</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Sin costos de implementación</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">done_all</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Cero comisiones por venta</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">done_all</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Infraestructura de altísima conversión</span>
+    </li>
+    </ul>
+    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-white bg-blue-500 rounded-full px-lg py-md hover:bg-blue-600 transition-all duration-200">Consultar Profesional</a>
+    </div>
+
+    <!-- E-commerce Custom -->
+    <div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] flex flex-col hover:border-blue-500 hover:shadow-lg transition-all duration-300">
+    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">A Medida</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Soluciones complejas para operaciones gigantes.</p>
+    <div class="mb-xl">
+    <span class="font-display-lg text-display-lg text-on-surface mt-6 block">A Medida</span>
+    </div>
+    <ul class="space-y-md mb-xl flex-1 mt-4">
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">architecture</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Integración ERP a medida</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">architecture</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Migraciones complejas</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">architecture</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Soporte 24/7 dedicado</span>
+    </li>
+    </ul>
+    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-lg py-md hover:border-blue-500 hover:text-blue-600 transition-all duration-200">Consultar Especialista</a>
+    </div>
+</div>
+
+<div class="w-full h-px bg-outline-variant/50 max-w-5xl mx-auto mb-3xl"></div>
+
+<!-- RAG Plans -->
+<div class="text-center mb-2xl">
+<span class="inline-block py-1 px-3 rounded-full bg-purple-100 text-purple-700 font-label-sm mb-4">I.A. y RAG</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Planes de Inteligencia Artificial</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Asistentes inteligentes entrenados con el conocimiento de tu empresa.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg max-w-5xl mx-auto">
+    <!-- RAG Basic -->
+    <div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] flex flex-col hover:border-purple-500 hover:shadow-lg transition-all duration-300">
+    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Básico</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Para automatizar preguntas frecuentes simples.</p>
+    <div class="mb-xl">
+    <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
+    <span class="font-display-lg text-display-lg text-on-surface">$30K</span>
+    <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
+    </div>
+    <ul class="space-y-md mb-xl flex-1">
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Integración Web Widget</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Base de conocimiento estándar</span>
+    </li>
+    </ul>
+    <a href="#" (click)="scrollToContact('rag', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-lg py-md hover:border-purple-500 hover:text-purple-600 transition-all duration-200">Consultar Básico</a>
+    </div>
+
+    <!-- RAG Pro -->
+    <div class="bg-surface border-2 border-purple-500 rounded-xl p-xl shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),_0px_10px_10px_-5px_rgba(0,0,0,0.04)] flex flex-col relative transform md:-translate-y-4 hover:shadow-purple-500/20 transition-all duration-300">
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-label-md text-[10px] uppercase tracking-wider px-4 py-1 rounded-full shadow-md whitespace-nowrap">
+        Tendencia en IA
+    </div>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Profesional</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Soporte inteligente omnicanal y sin alucinaciones.</p>
+    <div class="mb-xl">
+    <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
+    <span class="font-display-lg text-display-lg text-on-surface">$60K</span>
+    <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
+    </div>
+    <ul class="space-y-md mb-xl flex-1">
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">smart_toy</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Respuestas 100% precisas y fiables (RAG)</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">hub</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Integración omnicanal (WhatsApp, Web, CRM)</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">support_agent</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Automatización de soporte 24/7 sin fallos</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">analytics</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Análisis de interacciones en tiempo real</span>
+    </li>
+    </ul>
+    <a href="#" (click)="scrollToContact('rag', $event)" class="text-center w-full font-label-md text-label-md text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full px-lg py-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 shadow-sm">
+        Consultar Profesional
+    </a>
+    </div>
+
+    <!-- RAG Custom -->
+    <div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] flex flex-col hover:border-purple-500 hover:shadow-lg transition-all duration-300">
+    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">A Medida</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Agentes IA autónomos y flujos complejos.</p>
+    <div class="mb-xl">
+    <span class="font-display-lg text-display-lg text-on-surface mt-6 block">A Medida</span>
+    </div>
+    <ul class="space-y-md mb-xl flex-1 mt-4">
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">account_tree</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Automatizaciones complejas (N8N)</span>
+    </li>
+    <li class="flex items-start gap-sm">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">security</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant">Modelos y BD on-premise</span>
+    </li>
+    </ul>
+    <a href="#" (click)="scrollToContact('rag', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-lg py-md hover:border-purple-500 hover:text-purple-600 transition-all duration-200">Consultar Especialista</a>
+    </div>
+</div>
+
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contacto" class="py-3xl px-gutter max-w-container-max mx-auto">
+<div class="bg-gradient-to-br from-surface to-surface-container border border-outline-variant rounded-2xl p-xl lg:p-3xl shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1)] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500 rounded-full blur-[100px] opacity-10"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 rounded-full blur-[100px] opacity-10"></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-2xl relative z-10">
+    <div class="flex flex-col justify-center">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Hablemos de tu proyecto</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">Déjanos tus datos y un especialista de nuestro equipo se pondrá en contacto contigo en menos de 24 horas para analizar cómo podemos escalar tu negocio.</p>
+        <div class="space-y-md">
+            <div class="flex items-center gap-sm">
+                <div class="w-12 h-12 rounded-full bg-surface-bright border border-outline-variant flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined text-[24px]">mark_email_read</span>
+                </div>
+                <div>
+                    <p class="font-label-md text-label-md text-on-surface-variant">Email Directo</p>
+                    <p class="font-body-md text-body-md text-on-surface font-bold">consultas@mail.katrix.com.ar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form (submit)="submitForm($event)" class="bg-surface border border-outline-variant rounded-xl p-lg shadow-sm flex flex-col gap-md">
+        <!-- FormSubmit Config -->
+        <input type="hidden" name="_subject" value="Nuevo prospecto desde Katrix Landing">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Nombre Completo</label>
+                <input type="text" name="nombre" required class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Ej. Juan Pérez">
+            </div>
+            <div>
+                <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Email Corporativo</label>
+                <input type="email" name="email" required class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="juan@tuempresa.com">
+            </div>
+        </div>
+        <div>
+            <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Servicio de Interés</label>
+            <select name="servicio_interes" required [value]="selectedService()" (change)="selectedService.set($any($event.target).value)" class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none cursor-pointer">
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="ecommerce">E-commerce de alto rendimiento</option>
+                <option value="rag">Inteligencia Artificial y RAG</option>
+                <option value="automatizacion">Automatizaciones N8N</option>
+                <option value="consultoria">Consultoría a Medida</option>
+            </select>
+        </div>
+        <div>
+            <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Mensaje (Opcional)</label>
+            <textarea name="mensaje" rows="4" class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none" placeholder="Cuéntanos brevemente sobre tu proyecto o desafío..."></textarea>
+        </div>
+        
+        <button type="submit" [disabled]="isSubmitting()" class="mt-2 w-full font-label-md text-label-md text-white bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg px-xl py-4 hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none">
+            @if (isSubmitting()) {
+                Enviando...
+                <span class="material-symbols-outlined text-[18px] animate-spin">sync</span>
+            } @else {
+                Solicitar Contacto
+                <span class="material-symbols-outlined text-[18px]">send</span>
+            }
+        </button>
+
+        @if (submitSuccess()) {
+            <div class="mt-2 p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg flex items-center gap-2 animate-pulse">
+                <span class="material-symbols-outlined text-[20px]">check_circle</span>
+                <span class="font-body-sm">¡Mensaje enviado con éxito! Nos contactaremos a la brevedad.</span>
+            </div>
+        }
+
+        @if (submitError()) {
+            <div class="mt-2 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg flex items-center gap-2 animate-pulse">
+                <span class="material-symbols-outlined text-[20px]">error</span>
+                <span class="font-body-sm">Hubo un error al enviar el mensaje. Inténtalo de nuevo.</span>
+            </div>
+        }
+    </form>
+</div>
+</div>
+</section>
+</main>
+}
+
+@if(currentView() === 'privacidad') {
+<main class="pt-32 pb-3xl max-w-4xl mx-auto px-gutter min-h-screen">
+    <button (click)="setView('home', $event)" class="text-primary flex items-center gap-2 hover:underline mb-lg font-label-md">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al inicio
+    </button>
+    <div class="bg-surface border border-outline-variant rounded-2xl p-xl lg:p-2xl shadow-sm">
+        <h1 class="font-display-md text-display-md text-on-surface mb-lg">Política de Privacidad</h1>
+        <div class="font-body-md text-on-surface-variant space-y-md">
+            <p>En Katrix, la privacidad y seguridad de sus datos son nuestra máxima prioridad. Esta política detalla cómo manejamos la información corporativa.</p>
+            <h2 class="font-headline-sm text-on-surface mt-xl mb-sm">1. Recopilación de Datos</h2>
+            <p>Solo recopilamos la información estrictamente necesaria para brindar nuestros servicios de infraestructura, E-commerce e IA. No comercializamos datos de clientes con terceros.</p>
+            <h2 class="font-headline-sm text-on-surface mt-xl mb-sm">2. Uso de la Información</h2>
+            <p>Los datos procesados por nuestros sistemas RAG y automatizaciones (N8N) se procesan en entornos aislados y no se utilizan para entrenar modelos públicos.</p>
+            <h2 class="font-headline-sm text-on-surface mt-xl mb-sm">3. Sus Derechos</h2>
+            <p>Puede solicitar la eliminación completa de su entorno y base de datos en cualquier momento mediante un ticket de soporte.</p>
+        </div>
+    </div>
+</main>
+}
+
+@if(currentView() === 'terminos') {
+<main class="pt-32 pb-3xl max-w-4xl mx-auto px-gutter min-h-screen">
+    <button (click)="setView('home', $event)" class="text-primary flex items-center gap-2 hover:underline mb-lg font-label-md">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al inicio
+    </button>
+    <div class="bg-surface border border-outline-variant rounded-2xl p-xl lg:p-2xl shadow-sm">
+        <h1 class="font-display-md text-display-md text-on-surface mb-lg">Términos de Servicio</h1>
+        <div class="font-body-md text-on-surface-variant space-y-md">
+            <p>Al utilizar los servicios de Katrix, usted acepta los siguientes términos comerciales.</p>
+            <h2 class="font-headline-sm text-on-surface mt-xl mb-sm">1. Prestación de Servicios</h2>
+            <p>Katrix se compromete a entregar infraestructura de alta disponibilidad (SLA 99.9% en planes personalizados) para sus desarrollos web y de IA.</p>
+            <h2 class="font-headline-sm text-on-surface mt-xl mb-sm">2. Facturación y Pagos</h2>
+            <p>Los servicios se facturan por adelantado de forma mensual. Las implementaciones a medida tienen términos de pago específicos detallados en su contrato particular.</p>
+            <h2 class="font-headline-sm text-on-surface mt-xl mb-sm">3. Propiedad Intelectual</h2>
+            <p>El código a medida desarrollado para su empresa le pertenece al 100% una vez abonado el proyecto completo. La infraestructura base de Katrix sigue siendo propiedad de la agencia.</p>
+        </div>
+    </div>
+</main>
+}
+
+@if(currentView() === 'seguridad') {
+<main class="pt-32 pb-3xl max-w-4xl mx-auto px-gutter min-h-screen">
+    <button (click)="setView('home', $event)" class="text-primary flex items-center gap-2 hover:underline mb-lg font-label-md">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al inicio
+    </button>
+    <div class="bg-surface border border-outline-variant rounded-2xl p-xl lg:p-2xl shadow-sm">
+        <div class="flex items-center gap-md mb-lg">
+            <span class="material-symbols-outlined text-[40px] text-emerald-500">verified_user</span>
+            <h1 class="font-display-md text-display-md text-on-surface">Seguridad Corporativa</h1>
+        </div>
+        <div class="font-body-md text-on-surface-variant space-y-md">
+            <p>Nuestra infraestructura está diseñada pensando en las empresas más exigentes.</p>
+            <ul class="list-disc pl-lg space-y-sm mt-md">
+                <li><strong>Encriptación End-to-End:</strong> Todos los datos en tránsito y en reposo están encriptados bajo protocolos AES-256.</li>
+                <li><strong>Aislamiento de IA:</strong> Los nodos RAG están instanciados de forma independiente por cliente, impidiendo la filtración de conocimiento inter-empresarial.</li>
+                <li><strong>Backups Continuos:</strong> Copias de seguridad automáticas multi-zona cada 6 horas.</li>
+            </ul>
+        </div>
+    </div>
+</main>
+}
+
+@if(currentView() === 'estado') {
+<main class="pt-32 pb-3xl max-w-4xl mx-auto px-gutter min-h-screen">
+    <button (click)="setView('home', $event)" class="text-primary flex items-center gap-2 hover:underline mb-lg font-label-md">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al inicio
+    </button>
+    <div class="bg-surface border border-outline-variant rounded-2xl p-xl lg:p-2xl shadow-sm">
+        <h1 class="font-display-md text-display-md text-on-surface mb-lg">Estado del Sistema</h1>
+        
+        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-lg flex items-center gap-md mb-xl">
+            <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+            <p class="font-label-lg text-emerald-800">Todos los sistemas operativos y funcionando al 100%.</p>
+        </div>
+
+        <div class="space-y-sm">
+            <div class="flex justify-between items-center py-sm border-b border-outline-variant">
+                <span class="font-body-md text-on-surface">Plataforma E-commerce</span>
+                <span class="font-label-sm text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Operativo</span>
+            </div>
+            <div class="flex justify-between items-center py-sm border-b border-outline-variant">
+                <span class="font-body-md text-on-surface">Nodos RAG (Inteligencia Artificial)</span>
+                <span class="font-label-sm text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Operativo</span>
+            </div>
+            <div class="flex justify-between items-center py-sm border-b border-outline-variant">
+                <span class="font-body-md text-on-surface">Servidores de Automatización (N8N)</span>
+                <span class="font-label-sm text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Operativo</span>
+            </div>
+            <div class="flex justify-between items-center py-sm border-b border-outline-variant">
+                <span class="font-body-md text-on-surface">Panel de Clientes</span>
+                <span class="font-label-sm text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Operativo</span>
+            </div>
+        </div>
+    </div>
+</main>
+}
+<!-- Footer -->
+<footer class="bg-surface-container-low full-width border-t border-outline-variant flat no shadows">
+<div class="flex flex-col md:flex-row justify-between items-center py-xl px-gutter max-w-container-max mx-auto">
+<div class="flex items-center mb-md md:mb-0">
+<img src="logo.png" alt="Katrix Logo" class="h-10 md:h-12 w-auto object-contain">
+</div>
+<div class="flex gap-lg items-center mb-md md:mb-0">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 cursor-pointer" (click)="setView('privacidad', $event)">Política de Privacidad</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 cursor-pointer" (click)="setView('terminos', $event)">Términos de Servicio</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 cursor-pointer" (click)="setView('seguridad', $event)">Seguridad</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 cursor-pointer" (click)="setView('estado', $event)">Estado del Sistema</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 Katrix Inc. Todos los derechos reservados.</p>
+</div>
+</footer>
