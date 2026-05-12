@@ -36,7 +36,7 @@ Plataforma de presentación corporativa (Landing Page) para **Katrix**, una agen
 Aquí tienes la estructura visual de la aplicación:
 
 ### 1. Sección de Precios y Servicios
-![Precios](docs/pricing-screenshot.png) <!-- Reemplazar con screenshot real -->
+![Precios](docs/pricing.png)
 
 ### 2. Formulario de Contacto Dinámico
 ![Formulario](docs/contact-screenshot.png) <!-- Reemplazar con screenshot real -->
