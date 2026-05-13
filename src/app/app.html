@@ -4,12 +4,26 @@
 <div class="flex items-center">
 <a href="#" (click)="setView('home', $event)" class="hover:opacity-80 transition-opacity"><img src="logo.png" alt="Katrix Logo" class="h-10 md:h-12 w-auto object-contain"></a>
 </div>
-<nav class="hidden md:flex items-center bg-surface-container-low/50 p-1 rounded-full border border-outline-variant/30">
-<a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" href="#caracteristicas">Características</a>
-<a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" href="#soluciones">Soluciones</a>
-<a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" href="#cultura">Cultura</a>
-<a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" href="#precios">Precios</a>
-</nav>
+    <nav class="hidden md:flex flex-col items-center group/nav">
+        <div class="flex items-center bg-surface-container-low/50 p-1 rounded-full border border-outline-variant/30 relative">
+            <a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" 
+               href="#caracteristicas" (mouseenter)="scrollToSection('caracteristicas')">Características</a>
+            <a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" 
+               href="#soluciones" (mouseenter)="scrollToSection('soluciones')">Soluciones</a>
+            <a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" 
+               href="#cultura" (mouseenter)="scrollToSection('cultura')">Cultura</a>
+            <a class="font-label-md text-[14px] text-on-surface px-5 py-2 rounded-full hover:bg-surface hover:shadow-sm hover:text-primary transition-all duration-300" 
+               href="#precios" (mouseenter)="scrollToSection('precios')">Precios</a>
+        </div>
+        <!-- Gradient indicator bar that moves dynamically -->
+        <div class="h-[3px] bg-gradient-to-r from-indigo-500 via-cyan-400 to-purple-500 rounded-full mt-2 self-start transition-all duration-500 ease-out shadow-[0_0_10px_rgba(99,102,241,0.3)]"
+             [style.width.px]="activeSection() === 'caracteristicas' ? 100 : activeSection() === 'soluciones' ? 85 : activeSection() === 'cultura' ? 70 : 70"
+             [style.transform]="activeSection() === 'caracteristicas' ? 'translateX(20px)' : 
+                               activeSection() === 'soluciones' ? 'translateX(158px)' : 
+                               activeSection() === 'cultura' ? 'translateX(282px)' : 
+                               'translateX(386px)'">
+        </div>
+    </nav>
 <div class="hidden md:flex items-center gap-md">
 <div class="relative flex group">
     <div class="absolute -inset-1 bg-gradient-to-r from-red-500 to-rose-600 rounded-full blur opacity-40 group-hover:opacity-60 animate-pulse transition duration-500"></div>
@@ -61,9 +75,13 @@
 <!-- Features Section -->
 <section id="caracteristicas" class="py-3xl bg-surface-bright px-gutter">
 <div class="max-w-container-max mx-auto">
-<div class="text-center mb-2xl">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Soluciones para Equipos Modernos</h2>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Ayudamos a empresas a operar con mayor eficiencia mediante automatización, infraestructura segura y soluciones preparadas para crecer junto a cada operación.</p>
+<div class="flex flex-col items-center mb-16 px-4">
+    <div class="inline-flex flex-col items-center p-8 bg-orange-100 rounded-3xl border border-orange-200 shadow-sm text-center">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Soluciones para Equipos Modernos</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+        Ayudamos a empresas a operar con mayor eficiencia mediante automatización, infraestructura segura y soluciones preparadas para crecer junto a cada operación.
+        </p>
+    </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
 <!-- Feature Card 1 -->
@@ -95,9 +113,11 @@
 </section>
 <!-- Solutions / Services Section -->
 <section id="soluciones" class="py-3xl px-gutter max-w-container-max mx-auto">
-<div class="text-center mb-2xl">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">La Combinación Perfecta</h2>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">IA aplicada, infraestructura escalable e integraciones inteligentes bajo una arquitectura segura y orientada a la productividad.</p>
+<div class="flex flex-col items-center mb-16">
+    <div class="inline-flex flex-col items-center p-8 bg-orange-100 rounded-3xl border border-orange-200 shadow-sm text-center">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">La Combinación Perfecta</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">IA aplicada, infraestructura escalable e integraciones inteligentes bajo una arquitectura segura y orientada a la productividad.</p>
+    </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
 <!-- Service Card 1 -->
@@ -145,8 +165,8 @@
 <img alt="Team collaboration" class="w-full h-full object-cover" data-alt="A diverse team of young professionals collaborating in a bright, modern, sunlit office space. They are gathered around a sleek glass table, looking at a minimalist laptop screen and smiling. The environment is airy with white walls, subtle gray architectural details, and natural light flooding in, embodying a clean, high-tech corporate culture. The mood is energetic, transparent, and collaborative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt-NQa8pBzrdd6ykDYPWL92nnvFWJHC-jZkdNBmzqzb0nQcEAXw5e7CqQG1jJPTblmkFjhw3b-1K7pF36ZEj6sPZdzp-R2OFPEjIX0UAQkjaBsDLwM43yJoBHSe_48MNHtGaG05SOOj7QJH_c1j7dm3ScXkS5Zys0bdhF5dSxO0THTRpdovMdH1ZVL7MUuwvuH_ZLRE9xuFkg_GHUB9TJYldLNLU19DfT0u2_SNvuh9GQmWB_eMSmo1xB6vlrpyiFNEy0tdq4JzRFd"/>
 </div>
 <div class="order-1 lg:order-2 flex flex-col justify-center">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-primary font-label-md text-label-md w-max mb-md">
-<span class="material-symbols-outlined text-[16px]">groups</span>
+<div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-surface-container text-primary font-bold text-[18px] w-max mb-md shadow-sm border border-primary/10">
+<span class="material-symbols-outlined text-[24px]">groups</span>
                         Nuestra Cultura
                     </div>
 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Nuestra Filosofía Simple</h2>
@@ -179,7 +199,7 @@
 
 <!-- Ecommerce Plans -->
 <div class="flex flex-col items-center mb-16">
-    <div class="inline-flex flex-col items-center p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 shadow-sm text-center">
+    <div class="inline-flex flex-col items-center p-8 bg-orange-100 rounded-3xl border border-orange-200 shadow-sm text-center">
         <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Planes de E-commerce</h2>
         <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto">Tiendas online de alto rendimiento preparadas para escalar sin límites.</p>
     </div>
@@ -189,26 +209,26 @@
     <div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] flex flex-col hover:border-blue-500 hover:shadow-lg transition-all duration-300">
     <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Básico</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Para negocios que recién comienzan.</p>
-    <div class="mb-xl">
+    <!-- <div class="mb-xl">
     <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
     <span class="font-display-lg text-display-lg text-on-surface">$15K</span>
     <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
-    </div>
-    <ul class="space-y-md mb-xl flex-1">
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">check</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Diseño responsivo</span>
+    </div> -->
+    <ul class="space-y-sm mb-xl flex-1">
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Diseño responsivo</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">check</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Hasta 20 productos</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Hasta 20 productos</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">check</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Soporte estándar</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte estándar</span>
     </li>
     </ul>
-    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-lg py-md hover:border-blue-500 hover:text-blue-600 transition-all duration-200">Consultar Básico</a>
+    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none">Consultar Básico</a>
     </div>
 
     <!-- E-commerce Pro -->
@@ -218,31 +238,31 @@
     </div>
     <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Profesional</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Tiendas online sin límites. Listas para vender a gran escala.</p>
-    <div class="mb-xl">
+    <!-- <div class="mb-xl">
     <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
-    <span class="font-display-lg text-display-lg text-on-surface">$35K</span>
+    <span class="font-display-lg text-display-lg text-on-surface"></span>
     <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
-    </div>
-    <ul class="space-y-md mb-xl flex-1">
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Chatbot IA integrado</span>
+    </div> -->
+    <ul class="space-y-sm mb-xl flex-1">
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Chatbot IA integrado</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Productos y ventas sin límites</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Productos y ventas sin límites</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Sin costos de implementación</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Sin costos de implementación</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Cero comisiones por venta</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Cero comisiones por venta</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Infraestructura de altísima conversión</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Infraestructura de altísima conversión</span>
     </li>
     </ul>
     <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-white bg-emerald-500 rounded-full px-lg py-md hover:bg-emerald-600 transition-all duration-200">Consultar Profesional</a>
@@ -252,24 +272,24 @@
     <div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] flex flex-col hover:border-blue-500 hover:shadow-lg transition-all duration-300">
     <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">A Medida</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Soluciones complejas para operaciones gigantes.</p>
-    <div class="mb-xl">
+    <!-- <div class="mb-xl">
     <span class="font-display-lg text-display-lg text-on-surface mt-6 block">A Medida</span>
-    </div>
-    <ul class="space-y-md mb-xl flex-1 mt-4">
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">architecture</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Integración ERP a medida</span>
+    </div> -->
+    <ul class="space-y-sm mb-xl flex-1 mt-4">
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Integración ERP a medida</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">architecture</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Migraciones complejas</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Migraciones complejas</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5">architecture</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Soporte 24/7 dedicado</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte 24/7 dedicado</span>
     </li>
     </ul>
-    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-lg py-md hover:border-blue-500 hover:text-blue-600 transition-all duration-200">Consultar Especialista</a>
+    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none">Consultar Especialista</a>
     </div>
 </div>
 
@@ -277,8 +297,8 @@
 
 <!-- RAG Plans -->
 <div class="flex flex-col items-center mb-16">
-    <div class="inline-flex flex-col items-center p-8 bg-purple-50/50 rounded-3xl border border-purple-100/50 shadow-sm text-center">
-        <span class="inline-block py-1 px-3 rounded-full bg-purple-100 text-purple-700 font-label-sm mb-4">I.A. y RAG</span>
+    <div class="inline-flex flex-col items-center p-8 bg-orange-100 rounded-3xl border border-orange-200 shadow-sm text-center">
+        <!-- <span class="inline-block py-1 px-3 rounded-full bg-purple-100 text-purple-700 font-label-sm mb-4">I.A. y RAG</span> -->
         <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Planes de Inteligencia Artificial</h2>
         <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto">Chatbots con RAG al mejor precio-calidad. Automatiza tu soporte con IA de bajo costo y alta precisión.</p>
     </div>
@@ -288,22 +308,22 @@
     <div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] flex flex-col hover:border-purple-500 hover:shadow-lg transition-all duration-300">
     <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Básico</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Para automatizar preguntas frecuentes simples.</p>
-    <div class="mb-xl">
+    <!-- <div class="mb-xl">
     <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
     <span class="font-display-lg text-display-lg text-on-surface">$30K</span>
     <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
-    </div>
-    <ul class="space-y-md mb-xl flex-1">
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">check</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Integración Web Widget</span>
+    </div> -->
+    <ul class="space-y-sm mb-xl flex-1">
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-purple-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-purple-600 transition-colors">Integración Web Widget</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">check</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Base de conocimiento estándar</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-purple-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-purple-600 transition-colors">Base de conocimiento estándar</span>
     </li>
     </ul>
-    <a href="#" (click)="scrollToContact('rag', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-lg py-md hover:border-purple-500 hover:text-purple-600 transition-all duration-200">Consultar Básico</a>
+    <a href="#" (click)="scrollToContact('rag', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none">Consultar Básico</a>
     </div>
 
     <!-- RAG Pro -->
@@ -313,27 +333,27 @@
     </div>
     <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Profesional</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Soporte inteligente omnicanal y sin alucinaciones.</p>
-    <div class="mb-xl">
+    <!-- <div class="mb-xl">
     <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
     <span class="font-display-lg text-display-lg text-on-surface">$60K</span>
     <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
-    </div>
-    <ul class="space-y-md mb-xl flex-1">
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">smart_toy</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Respuestas 100% precisas y fiables (RAG)</span>
+    </div> -->
+    <ul class="space-y-sm mb-xl flex-1">
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-purple-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">smart_toy</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-purple-600 transition-colors">Respuestas 100% precisas y fiables (RAG)</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">hub</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Integración omnicanal (WhatsApp, Web, CRM)</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-purple-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">hub</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-purple-600 transition-colors">Integración omnicanal (WhatsApp, Web, CRM)</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">support_agent</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Automatización de soporte 24/7 sin fallos</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-purple-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">support_agent</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-purple-600 transition-colors">Automatización de soporte 24/7 sin fallos</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">analytics</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Análisis de interacciones en tiempo real</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-purple-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">analytics</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-purple-600 transition-colors">Análisis de interacciones en tiempo real</span>
     </li>
     </ul>
     <a href="#" (click)="scrollToContact('rag', $event)" class="text-center w-full font-label-md text-label-md text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full px-lg py-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 shadow-sm">
@@ -345,20 +365,20 @@
     <div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_10px_15px_-3px_rgba(0,0,0,0.03)] flex flex-col hover:border-purple-500 hover:shadow-lg transition-all duration-300">
     <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">A Medida</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Agentes IA autónomos y flujos complejos.</p>
-    <div class="mb-xl">
+    <!-- <div class="mb-xl">
     <span class="font-display-lg text-display-lg text-on-surface mt-6 block">A Medida</span>
-    </div>
-    <ul class="space-y-md mb-xl flex-1 mt-4">
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">account_tree</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Automatizaciones complejas (N8N)</span>
+    </div> -->
+    <ul class="space-y-sm mb-xl flex-1 mt-4">
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-purple-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">account_tree</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-purple-600 transition-colors">Automatizaciones complejas (N8N)</span>
     </li>
-    <li class="flex items-start gap-sm">
-    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5">security</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant">Modelos y BD on-premise</span>
+    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-purple-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+    <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">security</span>
+    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-purple-600 transition-colors">Modelos y BD on-premise</span>
     </li>
     </ul>
-    <a href="#" (click)="scrollToContact('rag', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-surface border border-outline-variant rounded-full px-lg py-md hover:border-purple-500 hover:text-purple-600 transition-all duration-200">Consultar Especialista</a>
+    <a href="#" (click)="scrollToContact('rag', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none">Consultar Especialista</a>
     </div>
 </div>
 

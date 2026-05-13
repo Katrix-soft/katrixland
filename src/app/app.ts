@@ -8,6 +8,7 @@ import { Component, signal } from '@angular/core';
 })
 export class App {
   currentView = signal('home');
+  activeSection = signal('caracteristicas');
   selectedService = signal('');
   isSubmitting = signal(false);
   submitSuccess = signal(false);
@@ -26,6 +27,14 @@ export class App {
     const element = document.getElementById('contacto');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  scrollToSection(sectionId: string) {
+    this.activeSection.set(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
