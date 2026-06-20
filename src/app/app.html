@@ -127,7 +127,19 @@
 </div>
 <h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">E-commerce de Bajo Costo</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Tiendas online de alto rendimiento a precios competitivos, optimizadas para conversión y diseñadas para escalar sin límites.</p>
-<a href="https://eco.katrix.com.ar" target="_blank" class="inline-flex items-center gap-1 font-label-md text-primary hover:text-indigo-600 transition-colors mt-lg">Ver Proyecto <span class="material-symbols-outlined text-[16px]">open_in_new</span></a>
+<div class="relative inline-block mt-lg w-max">
+    <button (click)="toggleEcommerceDropdown($event)" class="inline-flex items-center gap-1 font-label-md text-primary hover:text-indigo-600 transition-colors cursor-pointer outline-none bg-transparent border-none p-0">
+        Ver Proyectos <span class="material-symbols-outlined text-[18px]">expand_more</span>
+    </button>
+    
+    <ul class="absolute bottom-full left-0 mb-2 w-64 bg-surface rounded-xl border border-outline-variant shadow-xl z-50 py-2 transition-all duration-200 transform origin-bottom-left"
+        [class.hidden]="!isEcommerceDropdownOpen()">
+        <li><a href="https://eco.katrix.com.ar" target="_blank" rel="noopener" class="block px-4 py-2 text-[14px] text-on-surface hover:bg-surface-bright hover:text-primary transition-colors">ecommerce Shoply</a></li>
+        <li><a href="https://esencia.katrix.com.ar" target="_blank" rel="noopener" class="block px-4 py-2 text-[14px] text-on-surface hover:bg-surface-bright hover:text-primary transition-colors">Esencia Perfumes</a></li>
+        <li><a href="https://barber.katrix.com.ar" target="_blank" rel="noopener" class="block px-4 py-2 text-[14px] text-on-surface hover:bg-surface-bright hover:text-primary transition-colors">Barbería</a></li>
+        <li><a href="https://gymapp.katrix.com.ar/" target="_blank" rel="noopener" class="block px-4 py-2 text-[14px] text-on-surface hover:bg-surface-bright hover:text-primary transition-colors">Gym</a></li>
+    </ul>
+</div>
 </div>
 <!-- Service Card 2 -->
 <div class="bg-surface border border-outline-variant rounded-xl p-lg hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20 hover:border-emerald-500 transition-all duration-300 group flex flex-col">

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,19 @@ export class App {
   submitSuccess = signal(false);
   submitError = signal(false);
   isMobileMenuOpen = signal(false);
+  isEcommerceDropdownOpen = signal(false);
+
+  toggleEcommerceDropdown(event: Event) {
+    event.stopPropagation();
+    this.isEcommerceDropdownOpen.set(!this.isEcommerceDropdownOpen());
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    if (this.isEcommerceDropdownOpen()) {
+      this.isEcommerceDropdownOpen.set(false);
+    }
+  }
 
   setView(view: string, event: Event) {
     event.preventDefault();
