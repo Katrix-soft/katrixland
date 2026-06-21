@@ -10,17 +10,24 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-# Etapa 2: Servidor Web (Nginx)
-FROM nginx:alpine
+# Etapa 2: Servidor Web (Node.js)
+FROM node:20-alpine
 
-# Copiar la configuración personalizada de Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-# Copiar los archivos compilados de Angular al directorio HTML de Nginx
-COPY --from=build /app/dist/katrix-landing/browser /usr/share/nginx/html
+# Copiar server.js y dependencias
+COPY package*.json ./
+# Instalar solo dependencias de producción
+RUN npm install express nodemailer cors --omit=dev
+
+# Copiar el archivo del servidor
+COPY server.js .
+
+# Copiar los archivos compilados de Angular desde la etapa anterior
+COPY --from=build /app/dist/katrix-landing /app/dist/katrix-landing
 
 # Exponer el puerto 80
 EXPOSE 80
 
-# Iniciar Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Iniciar el servidor Node.js
+CMD ["node", "server.js"]

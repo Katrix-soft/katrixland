@@ -66,12 +66,20 @@ export class App {
     this.submitError.set(false);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/consultas@katrix.com.ar', {
+      const payload = {
+        nombre: formData.get('nombre'),
+        email: formData.get('email'),
+        servicio_interes: formData.get('servicio_interes'),
+        mensaje: formData.get('mensaje')
+      };
+
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
-        body: formData
+        body: JSON.stringify(payload)
       });
 
       if (response.ok) {
