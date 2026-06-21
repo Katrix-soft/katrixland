@@ -66,7 +66,7 @@ export class App {
     this.submitError.set(false);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/consultas@mail.katrix.com.ar', {
+      const response = await fetch('https://formsubmit.co/ajax/consultas@katrix.com.ar', {
         method: 'POST',
         headers: {
             'Accept': 'application/json'
