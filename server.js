@@ -34,7 +34,7 @@ app.post('/api/contact', async (req, res) => {
         }
 
         const mailOptions = {
-            from: process.env.MAILER_SENDER_EMAIL || '"No responder - Katrix" <no-reply@katrix.com.ar>',
+            from: `"${nombre} (${email})" <${process.env.SMTP_USERNAME || 'consultas@katrix.com.ar'}>`,
             to: process.env.SMTP_USERNAME || 'consultas@katrix.com.ar',
             replyTo: email,
             subject: `Nuevo prospecto desde Katrix Landing: ${nombre}`,
