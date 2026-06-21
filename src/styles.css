@@ -9,3 +9,11 @@
   'GRAD' 0,
   'opsz' 24;
 }
+
+body {
+  background-image: url('/fondo-katrix.jpg.png');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
