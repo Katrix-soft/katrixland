@@ -331,6 +331,10 @@
     <div class="relative z-10 flex flex-col h-full flex-1">
     <h3 class="font-headline-sm text-headline-sm font-extrabold text-slate-900 mb-xs">Básico</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Para negocios que recién comienzan.</p>
+    <div class="mb-6">
+        <span class="font-display-md text-[32px] font-bold text-slate-900">$15.000</span>
+        <span class="font-body-sm text-slate-500">/mes</span>
+    </div>
     <ul class="space-y-sm mb-xl flex-1">
         <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
             <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
@@ -345,7 +349,7 @@
             <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte estándar</span>
         </li>
     </ul>
-    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Consultar Básico</a>
+    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Comenzar Básico</a>
     </div>
     </div>
     }
@@ -375,6 +379,10 @@
 
     <h3 class="font-headline-sm text-headline-sm font-extrabold text-slate-900 mb-xs text-center">Profesional</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg text-center">Tiendas online sin límites. Listas para vender a gran escala.</p>
+    <div class="mb-6 text-center">
+        <span class="font-display-md text-[32px] font-bold text-slate-900">{{ selectedProject() === 'barberia' || selectedProject() === 'gym' ? '$30.000' : '$45.000' }}</span>
+        <span class="font-body-sm text-slate-500">/mes</span>
+    </div>
     <ul class="space-y-sm mb-xl flex-1">
         @switch (selectedProject()) {
             @case ('barberia') {
@@ -451,7 +459,7 @@
     </ul>
     <a href="#" (click)="scrollToContact('ecommerce', $event)" 
        class="text-center w-full font-label-md text-label-md text-white rounded-full px-lg py-md transition-all duration-200 mt-auto {{ selectedProject() === 'barberia' ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-500 hover:bg-emerald-600' }}">
-        Consultar Profesional
+        Comenzar Profesional
     </a>
     </div>
     </div>
@@ -466,6 +474,10 @@
     <div class="relative z-10 flex flex-col h-full flex-1 mt-4">
     <h3 class="font-headline-sm text-headline-sm font-extrabold text-slate-900 mb-xs">A Medida</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Soluciones complejas para operaciones gigantes.</p>
+    <div class="mb-6 mt-2">
+        <span class="font-display-md text-[32px] font-bold text-slate-900">$55.000</span>
+        <span class="font-body-sm text-slate-500">/mes</span>
+    </div>
     <ul class="space-y-sm mb-xl flex-1 mt-4">
         <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
             <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
@@ -480,7 +492,7 @@
             <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte 24/7 dedicado</span>
         </li>
     </ul>
-    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Consultar Especialista</a>
+    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Comenzar Premium</a>
     </div>
     </div>
     }
