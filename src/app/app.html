@@ -349,7 +349,7 @@
             <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte estándar</span>
         </li>
     </ul>
-    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Comenzar Básico</a>
+    <a href="#" (click)="pagarPlan('Plan Básico', 15000, $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Comenzar Básico</a>
     </div>
     </div>
     }
@@ -457,7 +457,7 @@
             }
         }
     </ul>
-    <a href="#" (click)="scrollToContact('ecommerce', $event)" 
+    <a href="#" (click)="pagarPlan('Plan Profesional - ' + selectedProject(), selectedProject() === 'barberia' || selectedProject() === 'gym' ? 30000 : 45000, $event)" 
        class="text-center w-full font-label-md text-label-md text-white rounded-full px-lg py-md transition-all duration-200 mt-auto {{ selectedProject() === 'barberia' ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-500 hover:bg-emerald-600' }}">
         Comenzar Profesional
     </a>
@@ -492,7 +492,7 @@
             <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte 24/7 dedicado</span>
         </li>
     </ul>
-    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Comenzar Premium</a>
+    <a href="#" (click)="pagarPlan('Plan Premium a Medida', 55000, $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Comenzar Premium</a>
     </div>
     </div>
     }

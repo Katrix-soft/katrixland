@@ -1,4 +1,5 @@
-import { Component, signal, HostListener } from '@angular/core';
+import { Component, signal, HostListener, OnInit } from '@angular/core';
+import { loadMercadoPago } from '@mercadopago/sdk-js';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component, signal, HostListener } from '@angular/core';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
+export class App implements OnInit {
   currentView = signal('home');
   activeSection = signal('caracteristicas');
   selectedService = signal('');
@@ -17,6 +18,13 @@ export class App {
   isEcommerceDropdownOpen = signal(false);
   isServiceDropdownOpen = signal(false);
   selectedProject = signal<string>('shoply');
+  mp: any;
+
+  async ngOnInit() {
+    await loadMercadoPago();
+    // @ts-ignore
+    this.mp = new window.MercadoPago("TU_PUBLIC_KEY");
+  }
 
   toggleEcommerceDropdown(event: Event) {
     event.stopPropagation();
@@ -63,6 +71,29 @@ export class App {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  async pagarPlan(titulo: string, precio: number, event: Event) {
+    event.preventDefault();
+    try {
+      const response = await fetch('/api/create_preference', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title: titulo, price: precio })
+      });
+      const data = await response.json();
+      if (data.init_point) {
+        window.location.href = data.init_point;
+      } else {
+        console.error('No se recibió init_point', data);
+        alert('Hubo un error al procesar el pago. Por favor intenta nuevamente.');
+      }
+    } catch (error) {
+      console.error('Error al iniciar el pago', error);
+      alert('Hubo un error al conectarse con el servidor de pagos.');
     }
   }
 

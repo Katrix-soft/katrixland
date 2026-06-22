@@ -17,11 +17,14 @@
     "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
+    "@mercadopago/sdk-js": "latest",
+    "cors": "^2.8.5",
     "express": "^4.21.0",
     "nodemailer": "^6.9.0",
-    "cors": "^2.8.5"
+    "mercadopago": "latest",
+    "dotenv": "latest",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "^21.2.10",

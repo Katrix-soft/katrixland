@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const cors = require('cors');
+const { MercadoPagoConfig, Preference } = require('mercadopago');
 
 const app = express();
 const port = process.env.PORT || 80;
@@ -54,6 +56,46 @@ app.post('/api/contact', async (req, res) => {
     } catch (error) {
         console.error('Error enviando correo:', error);
         res.status(500).json({ error: 'Error interno del servidor al enviar el correo' });
+    }
+});
+
+// Endpoint para crear preferencia de Mercado Pago
+app.post('/api/create_preference', async (req, res) => {
+    try {
+        const { title, price } = req.body;
+
+        if (!title || !price) {
+            return res.status(400).json({ error: 'Faltan title o price' });
+        }
+
+        // Configurar cliente MP
+        const client = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN });
+        const preference = new Preference(client);
+
+        const response = await preference.create({
+            body: {
+                items: [
+                    {
+                        id: 'plan_katrix',
+                        title: title,
+                        quantity: 1,
+                        unit_price: Number(price)
+                    }
+                ],
+                back_urls: {
+                    success: 'https://katrix.com.ar',
+                    failure: 'https://katrix.com.ar',
+                    pending: 'https://katrix.com.ar'
+                },
+                auto_return: 'approved',
+            }
+        });
+
+        // Retorna el init_point para redirigir a Checkout Pro
+        res.status(200).json({ init_point: response.init_point });
+    } catch (error) {
+        console.error('Error creando preferencia:', error);
+        res.status(500).json({ error: 'Error interno al crear preferencia' });
     }
 });
 
