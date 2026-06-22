@@ -15,16 +15,31 @@ export class App {
   submitError = signal(false);
   isMobileMenuOpen = signal(false);
   isEcommerceDropdownOpen = signal(false);
+  isServiceDropdownOpen = signal(false);
+  selectedProject = signal<string>('shoply');
 
   toggleEcommerceDropdown(event: Event) {
     event.stopPropagation();
     this.isEcommerceDropdownOpen.set(!this.isEcommerceDropdownOpen());
   }
 
+  toggleServiceDropdown(event: Event) {
+    event.stopPropagation();
+    this.isServiceDropdownOpen.set(!this.isServiceDropdownOpen());
+  }
+
+  selectProject(project: string, event: Event) {
+    event.stopPropagation();
+    this.selectedProject.set(project);
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
     if (this.isEcommerceDropdownOpen()) {
       this.isEcommerceDropdownOpen.set(false);
+    }
+    if (this.isServiceDropdownOpen()) {
+      this.isServiceDropdownOpen.set(false);
     }
   }
 

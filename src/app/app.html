@@ -163,11 +163,11 @@
     <div class="w-8 h-[3px] rounded-full bg-blue-500 mb-4"></div>
     <p class="font-body-sm text-[14px] text-slate-600 font-medium leading-relaxed z-10 relative flex-1">Tiendas online de alto rendimiento a precios competitivos, optimizadas para conversión y diseñadas para escalar sin límites.</p>
     <div class="relative inline-block mt-6 w-max z-20">
-        <button (click)="toggleEcommerceDropdown($event)" class="inline-flex items-center gap-1 font-label-md text-blue-600 hover:text-blue-800 transition-colors cursor-pointer outline-none bg-transparent border-none p-0 relative">
-            Ver Proyectos <span class="material-symbols-outlined text-[18px]">expand_more</span>
+        <button (click)="toggleServiceDropdown($event)" class="inline-flex items-center gap-1 font-label-md text-blue-600 hover:text-blue-800 transition-colors cursor-pointer outline-none bg-transparent border-none p-0 relative">
+            Ver Proyectos <span class="material-symbols-outlined text-[18px] transition-transform duration-200" [class.rotate-180]="isServiceDropdownOpen()">expand_more</span>
         </button>
-        <ul class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-white rounded-xl border border-blue-100 shadow-xl z-50 py-2 transition-all duration-200 transform origin-bottom text-left"
-            [class.hidden]="!isEcommerceDropdownOpen()">
+        <ul class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-xl border border-blue-100 shadow-xl z-50 py-2 transition-all duration-200 transform origin-top text-left"
+            [class.hidden]="!isServiceDropdownOpen()">
             <li><a href="https://eco.katrix.com.ar" target="_blank" rel="noopener" class="block px-4 py-2 text-[14px] text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">ecommerce Shoply</a></li>
             <li><a href="https://esencia.katrix.com.ar" target="_blank" rel="noopener" class="block px-4 py-2 text-[14px] text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Esencia Perfumes</a></li>
             <li><a href="https://barber.katrix.com.ar" target="_blank" rel="noopener" class="block px-4 py-2 text-[14px] text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Barbería</a></li>
@@ -264,85 +264,200 @@
 <!-- Ecommerce Plans -->
 <div class="flex flex-col items-center mb-16 px-4">
     <div class="inline-flex flex-col items-center p-8 md:p-12 bg-surface/60 backdrop-blur-xl rounded-[32px] border border-blue-100 shadow-[0_8px_32px_rgba(0,50,255,0.05)] text-center max-w-4xl w-full">
-        <h2 class="font-display-md text-display-md md:text-[48px] md:leading-[56px] text-on-surface mb-4 font-bold tracking-tight">Planes de <span class="text-blue-600">E-commerce</span></h2>
+        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-4">
+            <h2 class="font-display-md text-display-md md:text-[48px] md:leading-[56px] text-on-surface font-bold tracking-tight">Planes de <span class="text-blue-600">E-commerce</span></h2>
+            <div class="relative z-50" (click)="$event.stopPropagation()">
+                <button (click)="toggleEcommerceDropdown($event)" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-label-md text-[13px] rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-none outline-none uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[18px]">folder_open</span>
+                    Proyectos
+                    <span class="material-symbols-outlined text-[16px] transition-transform duration-200" [class.rotate-180]="isEcommerceDropdownOpen()">expand_more</span>
+                </button>
+                @if (isEcommerceDropdownOpen()) {
+                <ul class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-56 bg-white backdrop-blur-xl rounded-2xl border border-blue-100 shadow-[0_16px_48px_rgba(37,99,235,0.15)] z-[60] py-2 text-left">
+                    <li>
+                        @if (selectedProject() === 'shoply') {
+                            <div class="px-5 py-3">
+                                <p class="text-[13px] text-slate-500 mb-2 flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-blue-500">storefront</span> Shoply</p>
+                                <a href="https://eco.katrix.com.ar" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-label-md text-[13px] rounded-lg shadow-md hover:shadow-lg transition-all">
+                                    <span class="material-symbols-outlined text-[18px]">play_arrow</span> Probar Demo
+                                </a>
+                            </div>
+                        } @else {
+                            <button (click)="selectProject('shoply', $event)" class="w-full flex items-center gap-3 px-5 py-3 text-[14px] text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors border-none bg-transparent cursor-pointer text-left">
+                                <span class="material-symbols-outlined text-[20px] text-blue-500">storefront</span>Shoply
+                            </button>
+                        }
+                    </li>
+                    <li>
+                        @if (selectedProject() === 'barberia') {
+                            <div class="px-5 py-3 border-t border-slate-100">
+                                <p class="text-[13px] text-slate-500 mb-2 flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-amber-500">content_cut</span> Barbería</p>
+                                <a href="https://barber.katrix.com.ar" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-label-md text-[13px] rounded-lg shadow-md hover:shadow-lg transition-all">
+                                    <span class="material-symbols-outlined text-[18px]">play_arrow</span> Probar Demo
+                                </a>
+                            </div>
+                        } @else {
+                            <button (click)="selectProject('barberia', $event)" class="w-full flex items-center gap-3 px-5 py-3 text-[14px] text-slate-700 hover:bg-amber-50 hover:text-amber-600 transition-colors border-none bg-transparent cursor-pointer text-left">
+                                <span class="material-symbols-outlined text-[20px] text-amber-500">content_cut</span>Barbería
+                            </button>
+                        }
+                    </li>
+                    <li>
+                        @if (selectedProject() === 'gym') {
+                            <div class="px-5 py-3 border-t border-slate-100">
+                                <p class="text-[13px] text-slate-500 mb-2 flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-emerald-500">fitness_center</span> Gym</p>
+                                <a href="https://gymapp.katrix.com.ar/" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-label-md text-[13px] rounded-lg shadow-md hover:shadow-lg transition-all">
+                                    <span class="material-symbols-outlined text-[18px]">play_arrow</span> Probar Demo
+                                </a>
+                            </div>
+                        } @else {
+                            <button (click)="selectProject('gym', $event)" class="w-full flex items-center gap-3 px-5 py-3 text-[14px] text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors border-none bg-transparent cursor-pointer text-left">
+                                <span class="material-symbols-outlined text-[20px] text-emerald-500">fitness_center</span>Gym
+                            </button>
+                        }
+                    </li>
+                </ul>
+                }
+            </div>
+        </div>
         <p class="font-body-md text-body-md md:text-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed font-medium">Tiendas online de alto rendimiento preparadas para escalar sin límites.</p>
     </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-lg max-w-5xl mx-auto mb-3xl">
     <!-- E-commerce Básico -->
+    @if (selectedProject() === 'shoply') {
     <div class="bg-gradient-to-br from-white/90 to-blue-50/90 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 md:p-10 shadow-[0_8px_32px_rgba(37,99,235,0.05)] hover:shadow-[0_16px_48px_rgba(37,99,235,0.1)] flex flex-col hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
     <div class="absolute bottom-0 right-0 w-48 h-48 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle, #3b82f6 2px, transparent 2px); background-size: 14px 14px; -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 60%);"></div>
     <div class="relative z-10 flex flex-col h-full flex-1">
     <h3 class="font-headline-sm text-headline-sm font-extrabold text-slate-900 mb-xs">Básico</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Para negocios que recién comienzan.</p>
-    <!-- <div class="mb-xl">
-    <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
-    <span class="font-display-lg text-display-lg text-on-surface">$15K</span>
-    <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
-    </div> -->
     <ul class="space-y-sm mb-xl flex-1">
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Diseño responsivo</span>
-    </li>
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Hasta 20 productos</span>
-    </li>
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte estándar</span>
-    </li>
+        <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+            <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Diseño responsivo</span>
+        </li>
+        <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+            <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Hasta 20 productos</span>
+        </li>
+        <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+            <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">check</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte estándar</span>
+        </li>
     </ul>
     <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Consultar Básico</a>
     </div>
     </div>
+    }
 
     <!-- E-commerce Pro -->
-    <div class="bg-gradient-to-br from-white/90 to-emerald-50/90 backdrop-blur-xl border-2 border-emerald-500 rounded-[32px] p-8 md:p-10 shadow-[0_16px_40px_rgba(16,185,129,0.15)] hover:shadow-[0_24px_64px_rgba(16,185,129,0.2)] hover:-translate-y-6 transform md:-translate-y-4 transition-all duration-300 flex flex-col relative overflow-hidden group">
-    <div class="absolute bottom-0 right-0 w-48 h-48 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle, #10b981 2px, transparent 2px); background-size: 14px 14px; -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 60%);"></div>
-    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white font-label-md text-[11px] font-bold uppercase tracking-widest px-6 py-1.5 rounded-b-xl shadow-md whitespace-nowrap z-20">
+    <div [class.md:col-start-2]="selectedProject() !== 'shoply'" 
+         class="bg-gradient-to-br from-white/90 backdrop-blur-xl border-2 rounded-[32px] p-8 md:p-10 hover:-translate-y-6 transform md:-translate-y-4 transition-all duration-300 flex flex-col relative overflow-hidden group {{ selectedProject() === 'barberia' ? 'to-amber-50/90 border-amber-500 shadow-[0_16px_40px_rgba(245,158,11,0.15)] hover:shadow-[0_24px_64px_rgba(245,158,11,0.2)]' : 'to-emerald-50/90 border-emerald-500 shadow-[0_16px_40px_rgba(16,185,129,0.15)] hover:shadow-[0_24px_64px_rgba(16,185,129,0.2)]' }}">
+    
+    <div class="absolute bottom-0 right-0 w-48 h-48 opacity-20 pointer-events-none" 
+         [style.background-image]="selectedProject() === 'barberia' ? 'radial-gradient(circle, #f59e0b 2px, transparent 2px)' : 'radial-gradient(circle, #10b981 2px, transparent 2px)'"
+         style="background-size: 14px 14px; -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 60%);"></div>
+    
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 text-white font-label-md text-[11px] font-bold uppercase tracking-widest px-6 py-1.5 rounded-b-xl shadow-md whitespace-nowrap z-20 {{ selectedProject() === 'barberia' ? 'bg-amber-500' : 'bg-emerald-500' }}">
         Más Elegido
     </div>
+    
     <div class="relative z-10 flex flex-col h-full flex-1 mt-4">
-    <h3 class="font-headline-sm text-headline-sm font-extrabold text-slate-900 mb-xs">Profesional</h3>
-    <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Tiendas online sin límites. Listas para vender a gran escala.</p>
-    <!-- <div class="mb-xl">
-    <span class="font-body-md text-body-md text-on-surface-variant block mb-1">Desde</span>
-    <span class="font-display-lg text-display-lg text-on-surface"></span>
-    <span class="font-body-md text-body-md text-on-surface-variant">/mes</span>
-    </div> -->
+        
+    @if (selectedProject() !== 'shoply') {
+        <div class="mb-5 flex justify-center">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[13px] font-bold uppercase tracking-wide border {{ selectedProject() === 'barberia' ? 'bg-amber-50 text-amber-600 border-amber-200' : 'bg-emerald-50 text-emerald-600 border-emerald-200' }}">
+                <span class="material-symbols-outlined text-[16px]">{{ selectedProject() === 'barberia' ? 'content_cut' : 'fitness_center' }}</span>
+                Plan especial para {{ selectedProject() === 'barberia' ? 'Barberías' : 'Gimnasios' }}
+            </span>
+        </div>
+    }
+
+    <h3 class="font-headline-sm text-headline-sm font-extrabold text-slate-900 mb-xs text-center">Profesional</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg text-center">Tiendas online sin límites. Listas para vender a gran escala.</p>
     <ul class="space-y-sm mb-xl flex-1">
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Chatbot IA integrado</span>
-    </li>
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Productos y ventas sin límites</span>
-    </li>
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Sin costos de implementación</span>
-    </li>
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Cero comisiones por venta</span>
-    </li>
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Infraestructura de altísima conversión</span>
-    </li>
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Soporte 24/7 dedicado</span>
-    </li>
+        @switch (selectedProject()) {
+            @case ('barberia') {
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-amber-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-amber-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-amber-600 transition-colors">Turnos ilimitados</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-amber-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-amber-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-amber-600 transition-colors">Pagos online integrados</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-amber-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-amber-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-amber-600 transition-colors">Reportes de caja diarios</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-amber-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-amber-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-amber-600 transition-colors">Catálogo de productos</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-amber-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-amber-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-amber-600 transition-colors">Soporte 24/7 dedicado</span>
+                </li>
+            }
+            @case ('gym') {
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Socios ilimitados</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Rutinas personalizadas</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Control de acceso QR</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Pagos recurrentes automáticos</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Soporte 24/7 dedicado</span>
+                </li>
+            }
+            @default {
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Chatbot IA integrado</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Productos y ventas sin límites</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Sin costos de implementación</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Cero comisiones por venta</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Infraestructura de altísima conversión</span>
+                </li>
+                <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-emerald-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+                    <span class="material-symbols-outlined text-emerald-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">done_all</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-emerald-600 transition-colors">Soporte 24/7 dedicado</span>
+                </li>
+            }
+        }
     </ul>
-    <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-white bg-emerald-500 rounded-full px-lg py-md hover:bg-emerald-600 transition-all duration-200 mt-auto">Consultar Profesional</a>
+    <a href="#" (click)="scrollToContact('ecommerce', $event)" 
+       class="text-center w-full font-label-md text-label-md text-white rounded-full px-lg py-md transition-all duration-200 mt-auto {{ selectedProject() === 'barberia' ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-500 hover:bg-emerald-600' }}">
+        Consultar Profesional
+    </a>
     </div>
     </div>
 
     <!-- E-commerce Custom -->
+    @if (selectedProject() === 'shoply') {
     <div class="bg-gradient-to-br from-white/90 to-red-50/90 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 md:p-10 shadow-[0_8px_32px_rgba(239,68,68,0.08)] hover:shadow-[0_16px_48px_rgba(239,68,68,0.12)] flex flex-col relative hover:-translate-y-1 transition-all duration-300 overflow-hidden group">
     <div class="absolute bottom-0 right-0 w-48 h-48 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle, #ef4444 2px, transparent 2px); background-size: 14px 14px; -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 60%);"></div>
     <div class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-red-500 text-white font-label-md text-[11px] font-bold uppercase tracking-widest px-6 py-1.5 rounded-b-xl shadow-md whitespace-nowrap z-20">
@@ -351,26 +466,24 @@
     <div class="relative z-10 flex flex-col h-full flex-1 mt-4">
     <h3 class="font-headline-sm text-headline-sm font-extrabold text-slate-900 mb-xs">A Medida</h3>
     <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">Soluciones complejas para operaciones gigantes.</p>
-    <!-- <div class="mb-xl">
-    <span class="font-display-lg text-display-lg text-on-surface mt-6 block">A Medida</span>
-    </div> -->
     <ul class="space-y-sm mb-xl flex-1 mt-4">
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Integración ERP a medida</span>
-    </li>
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Migraciones complejas</span>
-    </li>
-    <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
-    <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
-    <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte 24/7 dedicado</span>
-    </li>
+        <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+            <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Integración ERP a medida</span>
+        </li>
+        <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+            <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Migraciones complejas</span>
+        </li>
+        <li class="flex items-start gap-sm p-2 rounded-lg hover:bg-blue-50/50 hover:translate-x-2 transition-all duration-300 group cursor-default">
+            <span class="material-symbols-outlined text-blue-500 text-[20px] mt-0.5 group-hover:scale-110 transition-transform">architecture</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-blue-600 transition-colors">Soporte 24/7 dedicado</span>
+        </li>
     </ul>
     <a href="#" (click)="scrollToContact('ecommerce', $event)" class="text-center w-full font-label-md text-label-md text-on-surface bg-yellow-400 rounded-full px-lg py-md hover:bg-yellow-500 hover:shadow-lg transition-all duration-200 shadow-sm border-none mt-auto">Consultar Especialista</a>
     </div>
     </div>
+    }
 </div>
 
 <div class="w-full h-px bg-outline-variant/50 max-w-5xl mx-auto mb-3xl"></div>
