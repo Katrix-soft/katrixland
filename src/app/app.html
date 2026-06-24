@@ -271,14 +271,15 @@
 <!-- Ecommerce Plans -->
 <div class="flex flex-col items-center mb-16 px-4">
     <div class="inline-flex flex-col items-center p-8 md:p-12 bg-surface/60 backdrop-blur-xl rounded-[32px] border border-blue-100 shadow-[0_8px_32px_rgba(0,50,255,0.05)] text-center max-w-4xl w-full">
-        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-4">
-            <h2 class="font-display-md text-display-md md:text-[48px] md:leading-[56px] text-on-surface font-bold tracking-tight">Planes de <span class="text-blue-600">E-commerce</span></h2>
-            <div class="relative z-50" (click)="$event.stopPropagation()">
-                <button (click)="toggleEcommerceDropdown($event)" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-label-md text-[13px] rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-none outline-none uppercase tracking-wider">
-                    <span class="material-symbols-outlined text-[18px]">folder_open</span>
-                    Proyectos
-                    <span class="material-symbols-outlined text-[16px] transition-transform duration-200" [class.rotate-180]="isEcommerceDropdownOpen()">expand_more</span>
-                </button>
+        <div class="flex flex-col lg:flex-row items-center justify-between w-full gap-4 lg:gap-6 mb-4">
+            <h2 class="font-display-md text-display-md md:text-[48px] md:leading-[56px] text-on-surface font-bold tracking-tight md:whitespace-nowrap text-center lg:text-left w-full lg:w-auto">Planes de <span class="text-blue-600">E-commerce</span></h2>
+            <div class="flex flex-col md:flex-row items-center gap-3 md:gap-4">
+                <div class="relative z-50" (click)="$event.stopPropagation()">
+                    <button (click)="toggleEcommerceDropdown($event)" class="whitespace-nowrap inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-label-md text-[13px] rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-none outline-none uppercase tracking-wider">
+                        <span class="material-symbols-outlined text-[18px]">folder_open</span>
+                        Seleccionar Proyecto
+                        <span class="material-symbols-outlined text-[16px] transition-transform duration-200" [class.rotate-180]="isEcommerceDropdownOpen()">expand_more</span>
+                    </button>
                 @if (isEcommerceDropdownOpen()) {
                 <ul class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-56 bg-white backdrop-blur-xl rounded-2xl border border-blue-100 shadow-[0_16px_48px_rgba(37,99,235,0.15)] z-[60] py-2 text-left">
                     <li>
@@ -325,6 +326,14 @@
                     </li>
                 </ul>
                 }
+                </div>
+                <div class="relative flex items-center drop-shadow-md mt-2 md:mt-0 md:ml-2 shrink-0">
+                    <div class="md:hidden absolute -top-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-emerald-500 transform rotate-45 z-0 rounded-sm"></div>
+                    <div class="hidden md:block absolute top-1/2 -left-1.5 -translate-y-1/2 w-3.5 h-3.5 bg-emerald-500 transform rotate-45 z-0 rounded-sm"></div>
+                    <div class="relative z-10 text-[12px] md:text-[13px] text-white font-medium px-4 py-2 bg-emerald-500 rounded-2xl text-center md:whitespace-nowrap">
+                        Usted se encuentra en el proyecto <strong class="font-extrabold ml-1 text-emerald-50">{{ selectedProject() === 'shoply' ? 'Shoply (Tienda de compras)' : selectedProject() === 'barberia' ? 'Barbería' : 'Gym' }}</strong>
+                    </div>
+                </div>
             </div>
         </div>
         <p class="font-body-md text-body-md md:text-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed font-medium">Tiendas online de alto rendimiento preparadas para escalar sin límites.</p>

@@ -7,7 +7,8 @@ interface Particle {
   baseY: number;
   size: number;
   density: number;
-  color: string;
+  isBlue: boolean;
+  alpha: number;
 }
 
 @Component({
@@ -29,7 +30,7 @@ export class ParticleTextComponent implements AfterViewInit, OnDestroy {
 
   private particleSize: number = 2.5;
   private particleSpacing: number = 5;
-  private mouseRadius: number = 60;
+  private mouseRadius: number = 100;
 
   private mouse: { x: number | null; y: number | null } = { x: null, y: null };
 
@@ -47,7 +48,7 @@ export class ParticleTextComponent implements AfterViewInit, OnDestroy {
     this.animate();
     this.changeWord(this.words[0]);
 
-    const initialTimeout = setTimeout(() => this.nextWord(), 3000);
+    const initialTimeout = setTimeout(() => this.nextWord(), 8000);
     this.timeouts.push(initialTimeout);
   }
 
@@ -69,8 +70,14 @@ export class ParticleTextComponent implements AfterViewInit, OnDestroy {
 
   @HostListener('window:mousemove', ['$event'])
   onMouseMove(event: MouseEvent): void {
-    this.mouse.x = event.clientX;
-    this.mouse.y = event.clientY;
+    if (this.particleCanvas && this.particleCanvas.nativeElement) {
+      const rect = this.particleCanvas.nativeElement.getBoundingClientRect();
+      this.mouse.x = event.clientX - rect.left;
+      this.mouse.y = event.clientY - rect.top;
+    } else {
+      this.mouse.x = event.clientX;
+      this.mouse.y = event.clientY;
+    }
   }
 
   @HostListener('window:mouseout')
@@ -82,7 +89,6 @@ export class ParticleTextComponent implements AfterViewInit, OnDestroy {
   // --- Métodos adaptados de la clase Particle y auxiliares ---
 
   private createParticle(x: number, y: number): Particle {
-    const isBlue = Math.random() > 0.5;
     return {
       x: Math.random() * this.width,
       y: Math.random() * this.height,
@@ -90,31 +96,26 @@ export class ParticleTextComponent implements AfterViewInit, OnDestroy {
       baseY: y,
       size: this.particleSize,
       density: (Math.random() * 30) + 1,
-      color: isBlue ? `rgba(37, 99, 235, ${Math.random() * 0.5 + 0.5})` : `rgba(139, 92, 246, ${Math.random() * 0.5 + 0.5})`
+      isBlue: Math.random() > 0.5,
+      alpha: Math.random() * 0.5 + 0.5
     };
-  }
-
-  private drawParticle(p: Particle): void {
-    this.ctx.fillStyle = p.color;
-    this.ctx.beginPath();
-    this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    this.ctx.closePath();
-    this.ctx.fill();
   }
 
   private updateParticle(p: Particle): void {
     if (this.mouse.x !== null && this.mouse.y !== null) {
       const dx = this.mouse.x - p.x;
       const dy = this.mouse.y - p.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const forceDirectionX = dx / distance;
-      const forceDirectionY = dy / distance;
-      const maxDistance = this.mouseRadius;
+      const distanceSq = dx * dx + dy * dy;
+      const maxDistanceSq = this.mouseRadius * this.mouseRadius;
       
-      if (distance < maxDistance) {
-        const force = (maxDistance - distance) / maxDistance;
-        const directionX = forceDirectionX * force * p.density;
-        const directionY = forceDirectionY * force * p.density;
+      if (distanceSq < maxDistanceSq) {
+        const distance = Math.sqrt(distanceSq);
+        const forceDirectionX = dx / distance;
+        const forceDirectionY = dy / distance;
+        const force = (this.mouseRadius - distance) / this.mouseRadius;
+        
+        const directionX = forceDirectionX * force * p.density * 3;
+        const directionY = forceDirectionY * force * p.density * 3;
         
         p.x -= directionX;
         p.y -= directionY;
@@ -125,11 +126,11 @@ export class ParticleTextComponent implements AfterViewInit, OnDestroy {
     // Regresar a la posición base si no está afectado por el mouse
     if (p.x !== p.baseX) {
       const dx = p.x - p.baseX;
-      p.x -= dx / 15;
+      p.x -= dx / 10;
     }
     if (p.y !== p.baseY) {
       const dy = p.y - p.baseY;
-      p.y -= dy / 15;
+      p.y -= dy / 10;
     }
   }
 
@@ -197,10 +198,30 @@ export class ParticleTextComponent implements AfterViewInit, OnDestroy {
 
   private animate = (): void => {
     this.ctx.clearRect(0, 0, this.width, this.height);
+    
     for (let i = 0; i < this.particles.length; i++) {
-      this.drawParticle(this.particles[i]);
       this.updateParticle(this.particles[i]);
     }
+
+    this.ctx.fillStyle = '#2563eb';
+    for (let i = 0; i < this.particles.length; i++) {
+      const p = this.particles[i];
+      if (p.isBlue) {
+        this.ctx.globalAlpha = p.alpha;
+        this.ctx.fillRect(p.x - p.size, p.y - p.size, p.size * 2, p.size * 2);
+      }
+    }
+
+    this.ctx.fillStyle = '#8b5cf6';
+    for (let i = 0; i < this.particles.length; i++) {
+      const p = this.particles[i];
+      if (!p.isBlue) {
+        this.ctx.globalAlpha = p.alpha;
+        this.ctx.fillRect(p.x - p.size, p.y - p.size, p.size * 2, p.size * 2);
+      }
+    }
+
+    this.ctx.globalAlpha = 1.0;
     this.animationFrameId = requestAnimationFrame(this.animate);
   }
 
@@ -211,7 +232,7 @@ export class ParticleTextComponent implements AfterViewInit, OnDestroy {
       this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
       this.changeWord(this.words[this.currentWordIndex]);
       
-      const timeout2 = setTimeout(this.nextWord, 3000);
+      const timeout2 = setTimeout(this.nextWord, 8000);
       this.timeouts.push(timeout2);
     }, 1000);
     
