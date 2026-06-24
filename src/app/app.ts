@@ -1,9 +1,11 @@
 import { Component, signal, HostListener, OnInit } from '@angular/core';
 import { loadMercadoPago } from '@mercadopago/sdk-js';
+import { CyberCatComponent } from './cyber-cat/cyber-cat.component';
+import { ParticleTextComponent } from './particle-text/particle-text.component';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [CyberCatComponent, ParticleTextComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

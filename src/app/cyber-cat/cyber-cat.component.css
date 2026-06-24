@@ -1,0 +1,34 @@
+.cyber-cat-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 400px;
+  width: 100%;
+}
+
+.cyber-cat-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  /* Difuminado suave en los bordes para integrarlo orgánicamente sin que sea un cuadrado ni un círculo duro */
+  -webkit-mask-image: radial-gradient(circle, black 50%, transparent 80%);
+  mask-image: radial-gradient(circle, black 50%, transparent 80%);
+  
+  /* Mezcla de color opcional para fusionar el fondo del video con el sitio web */
+  mix-blend-mode: multiply; /* Si el video tiene fondo blanco, esto lo hace transparente */
+}
+
+/* Si el fondo del video es oscuro y la web es clara, este mix-blend-mode puede funcionar mejor: */
+@media (prefers-color-scheme: light) {
+  .cyber-cat-container.dark-video-bg {
+     mix-blend-mode: screen; 
+  }
+}
+
+.cyber-cat-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
